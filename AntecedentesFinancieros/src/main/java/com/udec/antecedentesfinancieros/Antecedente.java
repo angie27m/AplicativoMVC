@@ -5,31 +5,30 @@
  */
 package com.udec.antecedentesfinancieros;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
 /**
  *
  * @author angie
  */
-public class Antecedente {
+public class Antecedente implements Serializable {
 
     private Date fecha;
     private String descripcion;
-    private List<TipoAntecedente> tipoAntecedente = new ArrayList();
+    private byte idTipo;
 
-    public Antecedente(Date fecha, String descripcion) {
+    public byte getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(byte idTipo) {
+        this.idTipo = idTipo;
+    }
+    
+    public Antecedente(Date fecha, String descripcion, byte idTipo) {
         this.fecha = fecha;
         this.descripcion = descripcion;
-    }
-
-    public List<TipoAntecedente> getTipoAntecedente() {
-        return tipoAntecedente;
-    }
-
-    public void setTipoAntecedente(List<TipoAntecedente> tipoAntecedente) {
-        this.tipoAntecedente = tipoAntecedente;
+        this.idTipo= idTipo;
     }
 
     public Date getFecha() {

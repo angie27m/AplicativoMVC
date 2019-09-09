@@ -5,6 +5,7 @@
  */
 package com.udec.antecedentesfinancieros;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author angie
  */
-public class Persona {
+public class Persona implements Serializable {
 
     public long cedula;
     public String nombre;
@@ -20,11 +21,12 @@ public class Persona {
     public String género;
     public List<Antecedente> antecedentes = new ArrayList();
 
-    public Persona(long cedula, String nombre, int edad, String género) {
+    public Persona(long cedula, String nombre, int edad, String género, List<Antecedente> antecedentes) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.edad = edad;
         this.género = género;
+        this.antecedentes= antecedentes;
     }
 
     public long getCedula() {
