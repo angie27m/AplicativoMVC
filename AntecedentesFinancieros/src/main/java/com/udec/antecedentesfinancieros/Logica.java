@@ -5,13 +5,9 @@
  */
 package com.udec.antecedentesfinancieros;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -41,6 +37,7 @@ public class Logica {
 
     public Logica() {
         listaTipo();
+        muestraContenido();
         String continuar = "S";
         do {
             System.out.println("--Gestión antedentes financieros--");
@@ -98,7 +95,6 @@ public class Logica {
         Persona p1 = new Persona(cedula, nombre, edad, genero, listaAntecedentes);
         listaPersonas.add(p1);
         guardarPersonas(listaPersonas);
-        //guardarAntecedentes(listaAntecedentes);
     }
 
     private void llenarAntecedente() {
