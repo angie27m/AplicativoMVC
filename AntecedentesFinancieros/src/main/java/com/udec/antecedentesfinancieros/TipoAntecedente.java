@@ -13,6 +13,31 @@ public class TipoAntecedente {
 
     private String nombre;
     private String descripcion;
+    private boolean valor;
+    private int id;
+
+    public TipoAntecedente(String nombre, String descripcion, boolean valor, int id) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.valor = valor;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean getValor() {
+        return valor;
+    }
+
+    public void setValor(boolean valor) {
+        this.valor = valor;
+    }
 
     public String getNombre() {
         return nombre;
