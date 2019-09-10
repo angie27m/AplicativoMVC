@@ -7,9 +7,11 @@ package com.udec.antecedentesfinancieros;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
+ * Esta clase contiene los parámetros que tiene un antecedente
  *
- * @author angie
+ * @author Angie Manrique, Alisson Celeita
  */
 public class Antecedente implements Serializable {
 
@@ -24,11 +26,11 @@ public class Antecedente implements Serializable {
     public void setIdTipo(byte idTipo) {
         this.idTipo = idTipo;
     }
-    
+
     public Antecedente(Date fecha, String descripcion, byte idTipo) {
         this.fecha = fecha;
         this.descripcion = descripcion;
-        this.idTipo= idTipo;
+        this.idTipo = idTipo;
     }
 
     public Date getFecha() {

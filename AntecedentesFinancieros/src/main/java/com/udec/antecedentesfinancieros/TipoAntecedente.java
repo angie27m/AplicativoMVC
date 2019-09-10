@@ -6,8 +6,9 @@
 package com.udec.antecedentesfinancieros;
 
 /**
+ * Esta clase contiene los parámetros que tienen los tipos de antecedentes
  *
- * @author angie
+ * @author Angie Manrique, Alisson Celeita
  */
 public class TipoAntecedente {
 

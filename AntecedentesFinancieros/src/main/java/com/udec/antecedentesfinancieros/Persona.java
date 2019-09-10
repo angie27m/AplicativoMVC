@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Esta clase contiene los parámetros que tiene una persona
  *
- * @author angie
+ * @author Angie Manrique, Alisson Celeita
  */
 public class Persona implements Serializable {
 
@@ -26,7 +27,7 @@ public class Persona implements Serializable {
         this.nombre = nombre;
         this.edad = edad;
         this.género = género;
-        this.antecedentes= antecedentes;
+        this.antecedentes = antecedentes;
     }
 
     public long getCedula() {
@@ -68,7 +69,5 @@ public class Persona implements Serializable {
     public void setAntecedentes(List<Antecedente> antecedentes) {
         this.antecedentes = antecedentes;
     }
-    
-   
 
 }
