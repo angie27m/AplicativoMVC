@@ -77,13 +77,12 @@ public class Logica {
             }
             System.out.println("Desea continuar s/n");
             continuar = seleccione.nextLine();
-            enter = seleccione.nextLine();
         } while (continuar.equalsIgnoreCase("s"));
-
         imprimir();
     }
 
     private void registroPersona() {
+        listaAntecedentes = new ArrayList();
         System.out.println("--REGISTRO PERSONA--");
         System.out.println("Digite su cédula: ");
         cedula = seleccione.nextLong();
@@ -99,7 +98,7 @@ public class Logica {
         Persona p1 = new Persona(cedula, nombre, edad, genero, listaAntecedentes);
         listaPersonas.add(p1);
         guardarPersonas(listaPersonas);
-        guardarAntecedentes(listaAntecedentes);
+        //guardarAntecedentes(listaAntecedentes);
     }
 
     private void llenarAntecedente() {
@@ -127,6 +126,7 @@ public class Logica {
             if (idTipo == 1 || idTipo == 2 || idTipo == 3 || idTipo == 4) {
                 Antecedente antec = new Antecedente(fechita, descripcion, idTipo);
                 listaAntecedentes.add(antec);
+                System.out.println(listaAntecedentes.size());
                 System.out.println("Desea ingresar más antecedentes s/n");
                 antecedente = seleccione.nextLine();
             } else {
@@ -177,7 +177,7 @@ public class Logica {
                 per.antecedentes.addAll(listaAntecedentes);
             }
         }
-        guardarAntecedentes(listaAntecedentes);
+        //guardarAntecedentes(listaAntecedentes);
         guardarPersonas(listaPersonas);
     }
 
@@ -232,34 +232,6 @@ public class Logica {
         }
     }
 
-    public void guardarAntecedentes(List<Antecedente> antecedentes) {
-        try {
-            ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(antec));
-            salida.writeObject(listaAntecedentes);
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-    }
-
-    public void lecturaAntecedentes() {
-        try {
-            FileInputStream document = new FileInputStream(antec);
-            ObjectInputStream leer = new ObjectInputStream(document);
-            listaAntecedentes = (ArrayList<Antecedente>) leer.readObject();
-            for (Antecedente ant : listaAntecedentes) {
-                System.out.println("Fecha: " + (new SimpleDateFormat("yyyy-MM-dd").format(ant.getFecha())) + "      Descripción:" + ant.getDescripcion());
-                for (TipoAntecedente tipo : listatipos) {
-                    if (tipo.getId() == ant.getIdTipo()) {
-                        System.out.println("Tipo de antecedente: " + tipo.getNombre());
-                    }
-                }
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            e.getStackTrace();
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void muestraContenido() {
         try {
             FileInputStream archivo = new FileInputStream(perso);
@@ -268,8 +240,17 @@ public class Logica {
             for (Persona per : listaPersonas) {
                 System.out.println("Nombre: " + per.getNombre() + "     Cédula: "
                         + per.getCedula() + "      Edad:" + per.getEdad() + "     Género:" + per.getGénero());
+                List<Antecedente> listaA = per.getAntecedentes();
+                for (Antecedente ant : listaA) {
+                    System.out.println("Fecha: " + (new SimpleDateFormat("yyyy-MM-dd").format(ant.getFecha())) + "      Descripción:" + ant.getDescripcion());
+                    for (TipoAntecedente tipo : listatipos) {
+                        if (tipo.getId() == ant.getIdTipo()) {
+                            System.out.println("Tipo de antecedente: " + tipo.getNombre());
+                        }
+                    }
+                }
             }
-            lecturaAntecedentes();
+
         } catch (IOException | ClassNotFoundException e) {
             e.getStackTrace();
             System.out.println(e.getMessage());
